@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <script defer src="./index2.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>   
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1 style="font-size: 300%">Globall Contents Management center</h1>
+      
+    </div>
+  </header>
+
+  <section class="features">
+    <div class="container">
+      <div class="feature">
+        <img src="writing.png" alt="Write">
+        <p>You are creating a management account. Be discplined</b></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="registration">
+        <form action="/mregister2" method="post" id="registration_form">
+          <h1>Managment account</h1>
+          <div id="error-messages" style="color: red;"></div><br>
+          <p id="registration-emptyfield-error" class="error"></p>
+          <input style="width: 95%" type="text" name="username" id="username" placeholder="Username">
+          <p id="registration-username-error" class="error"></p>
+          <input style="width: 95%" type="password" name="password" id="password" placeholder="Password">
+            <p id="registration-password-error" class="error"></p>
+            <input style="width: 95%" type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password">
+            <p id="registration-confirmpassword-error" class="error"></p>
+            <button type="submit">Create account</button><br><br>
+            Have account?<a href="mlogin2.html">Login</a><br>
+            </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Globall Contents. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Display error messages based on the error parameter
+    function errorMessages() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const error = urlParams.get('error');
+
+      if (error === 'qjrfapps_gdfajsd_yrkwaqtefd_hdfreaujerw') {
+        document.getElementById('error-messages').textContent = 'A manager with such username already exist';
+      }else if (error === 'squyta_kiyvcmcs_ytsdwqzp_lmorodr') {
+        document.getElementById('error-messages').textContent = 'There was an error.';
+      }
+    }
+
+    // Restore form data from sessionStorage
+    function restoreFormData() {
+      const formData = JSON.parse(sessionStorage.getItem('registrationFormData')) || {};
+
+      document.getElementById('username').value = formData.username || '';
+      document.getElementById('email').value = formData.email || '';
+      document.getElementById('phone_number').value = formData.phone_number || '';
+
+      // Clear stored form data after restoring
+      sessionStorage.removeItem('registrationFormData');
+    }
+
+    // Save form data to sessionStorage
+    function saveFormData() {
+      const formData = {
+        username: document.getElementById('username').value,
+        email: document.getElementById('email').value,
+        phone_number: document.getElementById('phone_number').value,
+        // ... (save other form fields)
+      };
+
+      sessionStorage.setItem('registrationFormData', JSON.stringify(formData));
+    }
+
+    // Run the script when the DOM content is loaded
+    document.addEventListener('DOMContentLoaded', function () {
+      errorMessages();
+      restoreFormData(); // Restore form data on page load
+
+      // Add an event listener to the form submission
+      document.getElementById('registration_form').addEventListener('submit', function (event) {
+        // Save form data before submission
+        saveFormData();
+      });
+    });
+
+    // Function to send OTP
+    function sendOtp() {
+      const phoneNumber = document.getElementById('phone_number').value;
+      // Make an AJAX request to your server to trigger OTP sending
+      // You can use fetch or other AJAX libraries
+      fetch('/send-otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ phoneNumber }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert('OTP sent successfully. Check your phone.');
+        } else {
+          alert('Failed to send OTP. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error sending OTP:', error);
+      });
+    }
+  </script>
+</body>
+</html>

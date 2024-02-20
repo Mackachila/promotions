@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>management account</title>
+  <link rel="stylesheet" type="text/css" href="./maccount2.css">
+
+  <script defer src="./account2.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  </head>
+<body>
+
+<div id="navbar">
+  
+    <b style="color: white;">Manager: <b id="username-display"></b></b> <button id="logout-button">Logout</button>
+  </div>
+  
+</div>
+
+  
+<div id="content"><br><br><br>
+  <h4>You have been granted Account management authorities. Observe integrity</h4>
+  <section id="section2">
+  <h4>Deposit update</h4>
+  <form action="/maccount2" method="post" id="depositupdate">
+    <b> Input transaction ID and amount<br>
+    <div id="error-messages"></div><br>
+    <p id="registration-emptyfield-error" class="error"></p>
+    <input type="text" name="transactionid" id="transactionid" placeholder="M-Pesa message ID"><br>
+    <p id="transaction-id" class="error"></p>
+    <input type="number" name="transactionammount" id="transactionammount" placeholder="Ammount"><br>
+    <p id="transaction-amount" class="error"></p>
+    <button >Confirm Deposit</button>
+  </form >
+  </section>
+
+  <section id="section4">
+  <h3>Update a deposit number here incase of limits</h3>
+  <form action="/account-update" method="post" id="accountupdate">
+    <p id="accountupdate-emptyfield-error" class="error"></p>
+    <div id="error2-messages"></div><br>
+    <b>Users will send money to this phone number<br><br>
+    <input type="text" name="phonenumber" id="phonenumber" placeholder="Phone number"><br><br>
+    <p id="phonenumber-id" class="error"></p>
+    <b>Correct full name as per national ID in CAPITAL LETTERS<br><br>
+    <input type="text" name="fullaccountname" id="fullaccountname" placeholder="Ex. JOHN DEO"><br><br>
+    <p id="fullname-id" class="error"></p>
+    <button onclick="validateAccount()">Update</button>
+
+  </form>
+  
+  </section>
+  ..................................
+<p>You must observe integrity always</p>
+.......................................
+<p>This is the last section</p>
+
+</div>
+
+<footer>
+  <p>&copy; 2024 Crypto promotions. All rights reserved.</p>
+</footer>
+<script>
+    // Display error messages based on the error parameter
+    function errorMessages() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const error = urlParams.get('error');
+
+      if (error === 'qjrfapps_gdfajsd_yrkwaqtefd_hdfreaujerw') {
+        document.getElementById("error-messages").style.color = "red";
+        document.getElementById('error-messages').textContent = 'The M-Pesa code you entered already exist. Please counter check the code';
+      } if (error === 'squyta_kiyvcmcs_ytsdwqzp_lmorodr') {
+        document.getElementById("error-messages").style.color = "red";
+        document.getElementById('error-messages').textContent = 'There was an error. Please try again.';
+      } if (error === 'hdjhhwjs8748-uuey-7376ghgdsg-nncb') {
+       document.getElementById("error-messages").style.color = "green";
+       document.getElementById('error-messages').textContent = 'Deposit successfully updated.';
+      }
+
+      if (error === 'uidhagert-6tydfa-hhgjhdgh') {
+       document.getElementById("error2-messages").style.color = "green";
+       document.getElementById('error2-messages').textContent = 'Payment Account successfully Updated.';
+      }
+    }
+errorMessages();
+  </script>
+</body>
+</html>

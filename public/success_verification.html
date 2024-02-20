@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+  <title>Verification Successful</title>
+  <style>
+    body {
+      
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container2">
+    <div class="success-animation">
+      <img src="tick.png" alt="Success" width="100">
+      <h3>Phone number Successfully Verified</h3>
+      <button onclick="redirectToLogin()">Continue</button>
+    </div>
+  </div>
+
+  <script>
+    function redirectToLogin() {
+      // Redirect to the login page or any other destination
+      window.location.href = '/login';
+    }
+  </script>
+</body>
+</html>

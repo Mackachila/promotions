@@ -1,0 +1,284 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-image: url('background3.jpg'); /* Replace 'background-image.jpg' with the path to your image */
+  background-size: cover; /* Cover the entire viewport */
+  background-position: center; /* Center the background image */
+  background-repeat: repeat;
+}
+
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+.error{
+      color: red;
+      text-align: left;
+      font-size: 50%;
+    }
+  .success{
+      color: green;
+    }
+
+
+header h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+header p {
+  font-size: 1.2em;
+  margin: 10px 0 0;
+}
+
+.features {
+  background-color: #fff;
+  padding: 10px 0;
+}
+
+.feature {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.feature img {
+  width: 80px;
+  height: 80px;
+}
+
+.cta {
+  
+  color: #fff;
+  text-align: center;
+  padding: 1px 2;
+}
+
+.cta h2 {
+  font-size: 2.5em;
+  margin: 0 0 20px;
+}
+
+.cta p {
+  font-size: 1.2em;
+  margin: 0 0 30px;
+}
+
+.button {
+  display: inline-block;
+  background-color: #fff;
+  color: #007BFF;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+input[type = text],[type = email], [type = password], [type = number]{
+  padding: 10px;
+  flex: 1;
+  padding: 9px;
+ 
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.605);
+  font-size: 110%;
+  
+  
+}
+.placeholder-red::placeholder {
+  color: black;
+}
+button{
+  width: 90%;
+  background-color: #007BFF;
+  font-size: 120%;
+  padding: 4px;
+  color: white;
+  border-color: #007BFF;
+  border-radius: 10px;
+}
+.button:hover {
+  background-color: green;
+  color: #fff;
+}
+.registration{
+  background-color: transparent;
+  padding: 8px;
+  color: black;
+  border-width: 1px;
+  border-color: white;
+  
+  align-self: center;
+  
+}
+.registration p{
+  font-size: 80%;
+}
+.registration a{
+  text-decoration: none;
+}
+.registration-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 200px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+   
+    button:hover {
+      background-color: #2980b9;
+    }
+    .password-icon {
+      float: right;
+      top: 50%;
+      right: 10px;
+      cursor: pointer;
+      transform: translateY(-50%);
+      background: url('showpassword.png') no-repeat;
+      width: 20px;
+      height: 20px;
+      background-size: cover;
+    }
+
+    #errorlogincard {
+      display: none;
+      position: fixed;
+      top: 14%;
+      left: 50%;
+      font-size: 70%;
+      transform: translate(-50%, -50%);
+      padding: 9px;
+      background-color: red;
+      color: white;
+      border-radius: 3px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 4;
+  }
+
+  #resetsuccessful {
+    display: none;
+    position: fixed;
+    top: 28%;
+    left: 50%;
+    font-size: 150%;
+    transform: translate(-50%, -50%);
+    padding: 14px;
+    text-align: center;
+    background-color: white;
+    color: Green;
+    border-radius: 3px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 4;
+}
+
+#loginsuccessful {
+  display: none;
+  position: fixed;
+  top: 28%;
+  left: 50%;
+  font-size: 150%;
+  transform: translate(-50%, -50%);
+  padding: 14px;
+  text-align: center;
+  background-color: white;
+  color: Green;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 4;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  display: none; /* initially hidden */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -25px; /* Half of the height */
+  margin-left: -25px; /* Half of the width */
+  
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+label {
+  display: flex;
+  align-items: center;
+}
+
+label img {
+  width: 25px; /* Adjust the width as needed */
+  height: auto;
+  margin-right: 0px;
+  padding: 8px;
+  top: 30px;
+  background-color: rgba(255, 255, 255, 0.605);
+  border-right: none;
+  border-bottom-left-radius: 7px;
+  border-top-left-radius: 7px;
+  
+ /* Add spacing between the icon and text */
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  background-color: whitesmoke;
+  display: flex;
+  display: block;
+  width: 100%;
+  padding: 0px;
+  border-top: solid green 1pt;
+  
+      
+    }
+
+    .title-card {
+      background-color: #2980b9;
+      border-radius: 10px;
+      color: white;
+      padding: 8px;
+      font-size: 200%;
+      padding: 20px;
+      color: lightblue;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+  }

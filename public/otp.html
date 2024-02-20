@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>otp_verification</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <script defer src="./index.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>   
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <p>African Writers</p>
+    </div>
+  </header>
+
+  <section class="features">
+    <div class="container">
+      <div class="feature">
+        <img src="writing.png" alt="Write"><br>
+        <h1 style="color: red">Your account is not verified!</h1>
+        </h2> Let us help you secure your account. Please verify your phone number.</h2>
+        <h3>We sent you the OTP verification via sms.</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="registration">
+        <form action="/otp" method="post" id="otp_verification">
+          <div id="error-messages" style="color: red;"></div><br>
+          <p id="registration-emptyfield-error" class="error"></p>
+          <input style="width: 95%; height: 30px; font-size: 100%" type="text" id="phone_number" name="phone_number" placeholder="Enter the OTP"><br><br>
+          <input type="text" name="username" id="username" value=""> <!-- Hidden input for username -->
+          <button type="submit">Verify OTP</button><br><br>
+          <button type="submit">Resend OTP if you didn't recieve</button><br><br>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 African Writers. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Extract username from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get('username');
+
+    // Set the value of the username input box
+    document.getElementById('username').value = username;
+    document.getElementById('username1').textContent = username;
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payments</title>
+  <link rel="stylesheet" type="text/css" href="./workdashboard.css">
+
+  <script defer src="./payments.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  </head>
+<body>
+  <b style="color: white; font-size: 120%;">You will be automatically loged out in 1 hour. If you are not done, log in again</b><br>
+  <b style="color: white;">Manager:</b> <b  style= "color: yellow;" id ="username-display3"></b> <button id="logout-button3">Logout</button>
+<div id="container">
+<div id="accountsecction">
+  <b>Deposit History</b><br><br>
+  <div id="notransactions"></div>
+  
+  <table id="transactions-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="transactions-body">
+     
+    </tbody>
+    <button>Hide History</button>
+  </table>
+</div>
+
+<div id="walletsecction">
+  
+  <form id="yesterdaypayment">
+    <div id="error-messages"></div>
+    <label for="phonenumber" style="color: white;">Please Copy and paste Transaction ID here:</label>
+    <input type="text" id="withdrawalId2" name="withdrawalId2" required placeholder="Transaction ID"><br><br>
+     <button type="button" id="paid2-button">Successful</button>
+    <button type="button" id="rejected2-button">Rejected</button>
+    <button type="button" id="failed2-button">Failed</button>
+  </form>
+
+	<h2>Yesterday's Pending Payments</h2>
+    <table id="yesterday-table" border="1" style="background-color: aquamarine;">
+      <thead>
+        <tr>
+          <th>Transaction ID</th>
+          <th>Amount</th>
+          <th>Contact</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p>This is the last part for yesterday</p><br><br><br>
+</div>
+
+
+<div id="taskssecction">
+  <section id="section1">
+    <form id="todaypayments">
+      <div id="error-messages"></div>
+      <label for="phonenumber">Please Copy and paste Transaction ID here:</label>
+      <input type="text" id="withdrawalId" name="withdrawalId" required placeholder="Transaction ID"><br><br>
+       <button type="button" id="paid-button">Successful</button>
+      <button type="button" id="rejected-button">Rejected</button>
+      <button type="button" id="failed-button">Failed</button>
+    </form>  
+    <h2 style="color: black;">Today's Pending Payments</h2>
+    <table id="today-table" border="1" style="background-color: aquamarine;">
+      <thead>
+        <tr>
+          <th>Transaction ID</th>
+          <th>Amount</th>
+          <th>Contact</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p>This is the last part for today</p><br><br><br>
+  </section><br><br>
+
+</div>
+
+<div id="depositsecction">
+  <section id="otheraccountinfo">
+    
+      </section>
+    
+</div>
+
+<div id="withdrawalsecction">
+  <section id="otheraccountinfo">
+  
+  </section><br><br>
+
+  <div id="nowithdrawals"></div>
+  <button id="hidewithdrawalhistory" onclick="hideWithdrawalhistory()">Hide History</button>
+  <button id="showwithdrawalhistory" onclick="showWithdrawalhistory()">Show History</button>
+  <table id="withdrawals-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="withdrawals-body">
+     
+    </tbody>
+     </table>
+   
+</div>
+
+<section id="teamsecction">
+  <div id="teaminfo">
+     <div id="nomembers"></div><br>
+    
+    <table id="team-table">
+      <thead>
+        <tr>
+          <th>Member</th>
+          <th>First recharge amount</th>
+          <th>Amount Earned</th>
+        </tr>
+      </thead>
+      <tbody id="team-body">
+       
+      </tbody>
+      
+    </table>
+    
+  </div>
+  </section>
+</div>
+</div>
+<section id="bottomsecction">
+  
+<button id="buttonRight" onclick="showSection('taskssecction')">
+<b style="color: yellow">Pending today</b>
+</button>
+
+<button id="buttonLeft" onclick="showSection('walletsecction')">
+<b style="color: yellow">Pending Yesterday</b>
+</section></div>
+</body>
+</html>

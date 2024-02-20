@@ -1,0 +1,784 @@
+ body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Open Sans', sans-serif;
+            background: url('crypto.jpg');
+         
+        }
+
+        #loading-spinner {
+          border: 8px solid #f3f3f3;
+          border-top: 8px solid #3498db;
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+          animation: spin 1s linear infinite;
+          display: none;
+          position: absolute;
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        
+        #container {
+            position: relative;
+            height: 100vh;
+        }
+
+        #plansview {
+          width: 50%;
+      }
+
+        #accountsecction, #taskssecction, #walletsecction, #depositsecction,  #withdrawalsecction, #planssection, #teamsection{
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('crypto.jpg');
+            padding: 20px;
+            box-sizing: border-box;
+   
+        }
+        
+        #taskssecction{
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        #planslevel1, #planslevel2, #planslevel3, #planslevel4, #planslevel5, #planslevel6, #planslevel7, #planslevel8, #planslevel9, #planslevel10  {
+          background-color: #87ceeb;
+        }
+
+        #address23{
+            display: none;
+           
+        }
+        
+        #buttonRight, #buttonCenter, #buttonLeft, #buttonRightmost{
+            position: fixed;
+            bottom: 5px;
+            padding: 7px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            display: block;
+            
+            
+        }
+
+        #buttonRight {
+          left: 60%;
+            position: fixed;
+            background-color: transparent;
+            
+        }
+
+        #buttonCenter {
+        	position: fixed;
+            left: 35%;
+            background-color: transparent;
+            transform: translateX(-50%);
+        }
+
+        #buttonLeft {
+            left: 10px;
+            background-color: transparent;
+        }
+        .wallet{
+
+            align-self:  center; /* Float the image to the left */
+            /* Adjust the margin for positioning */
+            width: 25px; /* Adjust the width of the image */
+            height: auto; 
+        }
+
+        #buttonRightmost {
+          right: 10px;
+            position: fixed;
+            background-color: transparent;
+            
+        }
+        
+        #bottomsecction{
+          position: fixed;
+          bottom: 0px;
+          background-color: darkblue;
+          display: flex;
+          display: block;
+          color: white;
+          width: 100%;
+          padding: 28px;
+          border-top: solid green 1pt;
+          z-index: 3;
+          
+      }
+
+       #logoutsecction {
+      background-color: red;
+      color: white;
+      border: none;
+      width: 40%;
+      border-radius: 7px;
+      padding: 7px;
+      margin-right: 11px;
+      text-align: center;
+      cursor: pointer;
+      float: right;
+    }
+    #invitationsection {
+      background-color: #4285f4;;
+      color: white;
+      border: none;
+      width: 40%;
+      float: left;
+      margin-left: 11px;
+      border-radius: 7px;
+      padding: 7px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    #submittask {
+      background-color: green;
+      color: white;
+      border: none;
+      border-radius: 7px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #deposit1 {
+      background-color: #4285f4;;
+      color: white;
+      border: none;
+      border-radius: 7px;
+      width: 40%;
+      margin-right: 11px;
+      float: right;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #withdraw1 {
+      background-color: #4285f4;
+      color: white;
+      width: 45%;
+      margin-left: 11px;      
+      border: none;
+      border-radius: 7px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #content {
+      margin-top: 0px; /* Adjust based on navbar height */
+       /* Adjust based on dashboard width */
+      padding: 20px;
+      box-sizing: border-box;
+      z-index: 0;
+    }
+
+    #logout-button{
+      background-color: #ff0000;
+      padding: 5px;
+      font-size: 100%;
+      margin: 10px;
+      border: 1px solid hsl(0, 0%, 87%);
+      border-radius: 5px;
+      text-align: center;
+          }
+
+    #usernamelabel {
+      background-color: hsl(120, 73%, 75%);
+      padding: 5px;
+      font-size: 130%;
+      margin: 10px;
+      border: 1px solid hsl(0, 0%, 87%);
+      border-radius: 5px;
+      text-align: center;
+          }
+
+    #otheraccountinfo {
+      background-color: white;
+      padding: 5px;
+      margin: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      
+          }
+    #Depositwithdrawal {
+      background-color: #f5f5f5;
+      padding: 5px;
+      margin: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      
+            }
+            table {
+              border-collapse: collapse;
+              width: 100%;
+              font-size: 100%;
+            }
+            th, td {
+              border: 1px solid white;
+              padding: 5px;
+              text-align: left;
+            }
+
+            #success-animation{
+              display: none;
+              background-color: #ff0000;
+            }     
+     #section1 {
+      background-color: #f4f4f4;
+      padding: 5px;
+      margin: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      
+          }
+    #section2 {
+      background-color: transparent;
+      padding: 5px;
+      margin: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      
+    }
+    #section3 {
+      background-color: #ff6347;
+      padding: 5px;
+      margin: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      
+    }
+
+    #section4 {
+      background-color: lightblue;
+      padding: 5px;
+      margin: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      
+    }
+
+    #section5 {
+      background-color: #ffa500;
+      padding: 5px;
+      margin: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      
+    }
+
+    #section6 {
+      background-color: #90ee90;
+      padding: 5px;
+      margin: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      
+    }
+
+    #section7 {
+      background-color: #87ceeb;
+      padding: 5px;
+      margin: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      
+    }
+
+    #section8, #section9, #section10, #section11{
+      background-color: #90ee90;
+      padding: 5px;
+      margin: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      
+
+    }
+    p{
+       margin: 11px 0;
+       font-size: 80%;
+    }
+
+    textarea {
+      width: 99%;
+      height: 300px;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      padding: 10px;
+      font-size: 110%;
+    }
+    #deposit-confirmation-form {
+      border-color: #90ee90;
+      border-radius: 5px;
+      border-style: solid;
+      border-width: 2px;
+      padding: 4px;
+      width: 50%;
+      
+    }
+    #depositform {
+      padding: 6px;
+      
+    }
+    input[type = number],[type = text]{
+      width: 95%;
+      border-color: #90ee90;
+      padding: 10px;
+      border-width: 1pt;
+      font-size: 100%;
+      border-radius: 5px;
+      background-color: rgb(199, 221, 160);
+      outline: none;
+    }
+
+    #depositsteps{
+      display: none;
+    }
+
+    #withdrawalconfirmation{
+      display: none;
+    }
+    #withdrawalconfirmationbutton{
+      display: none;
+      background-color: green;
+      border-radius: 5px;
+      padding: 8px;
+      color: #f4f4f4;
+      
+      border: none;
+
+    }
+
+    #withdrawalcancelbutton{
+      
+      background-color: rgb(255, 0, 0);
+      border-radius: 5px;
+      padding: 7px;
+      color: #f4f4f4;
+      
+      border: none;
+
+    }
+
+    #withdrawalsupport{
+      
+      background-color: rgb(255, 0, 162);
+      border-radius: 5px;
+      padding: 7px;
+      color: #f4f4f4;
+      
+      border: none;
+      
+
+    }
+
+    #copylinkbutton{
+      
+      background-color: rgb(255, 0, 162);
+      border-radius: 5px;
+      padding: 7px;
+      font-size: 110%;
+      color: #f4f4f4;
+      cursor: pointer;
+      border: none;
+
+    }
+
+    #depositverification{
+      background-color: green;
+      border-radius: 5px;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #depositammountcancel{
+      background-color: rgb(255, 0, 0);
+      
+      border-radius: 5px;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #suportcontact{
+      background-color: rgb(255, 0, 162);
+      border-radius: 5px;
+      color: #ffffff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #hidewithdrawalhistory{
+      background-color: rgb(255, 0, 162);
+      border-radius: 5px;
+      color: #ffffff;
+      border: none;
+      padding: 6px;
+      cursor: pointer;
+    }
+    #showwithdrawalhistory{
+      background-color: rgb(255, 0, 162);
+      border-radius: 5px;
+      color: #ffffff;
+      border: none;
+      padding: 6px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+
+    .card {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+      animation: fadeIn 1s ease-in-out;
+      border-radius: 6px;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+    }
+    
+    .close:hover {
+      color: #000;
+    }
+
+    .overlay2 {
+      display: none;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+
+    .card3 {
+      display: none;
+      position: fixed;
+      top: 40%;
+      left: 50%;
+      width: 80%;
+      background-color: red;
+      text-align: center;
+      transform: translate(-50%, -50%);
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+      animation: fadeIn 1s ease-in-out;
+      border-radius: 6px;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+    }
+    
+    .close:hover {
+      color: #000;
+    }
+    
+    .overlay3 {
+      display: none;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+
+    #linkfloatingCard {
+      display: none;
+      position: fixed;
+      top: 28%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 9px;
+      background-color: rgb(128, 128, 128);
+      color: white;
+      border-radius: 7px;
+      font-style: italic;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 4;
+  }
+
+  #successpromocard {
+    display: none;
+    position: fixed;
+    top: 28%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    padding: 12px;
+    background-color: rgb(108, 220, 108);
+    color: white;
+    border-radius: 7px;
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 4;
+}
+
+#errorpromocard {
+  display: none;
+  position: fixed;
+  top: 28%;
+  left: 50%;
+  font-size: 70%;
+  transform: translate(-50%, -50%);
+  padding: 12px;
+  background-color: white;
+  color: red;
+  border-radius: 7px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 4;
+}
+
+  #internetfloatingCard {
+    display: none;
+    position: fixed;
+    top: 7%;
+    left: 50%;
+    font-size: 70%;
+    transform: translate(-50%, -50%);
+    padding: 9px;
+    background-color: rgb(230, 6, 6);
+    color: white;
+    border-radius: 7px;
+    box-shadow: 0 4px 8px rgba(168, 2, 2, 0.1);
+    z-index: 4;
+}
+
+#backonlinefloatingCard {
+  display: block;
+  position: fixed;
+  top: 11%;
+  left: 91%;
+  font-size: 70%;
+  transform: translate(-50%, -50%);
+  padding: 9px;
+  background-color: transparent;
+  color: white;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px rgba(243, 240, 240, 0.1);
+  z-index: 4;
+  cursor: pointer;
+}
+  #teamsection{
+    padding: 20px;
+    background-color: #87ceeb;
+    
+  }
+  #paid-button, #paid2-button{
+    background-color: green;
+    border-radius: 7px;
+    padding: 6px;
+    color: white;
+    font-size: 120%;
+    border: none;
+    cursor: pointer;
+  }
+
+  #rejected-button, #rejected2-button {
+    background-color: rgb(255, 0, 162);
+    border-radius: 7px;
+    padding: 6px;
+    color: white;
+    font-size: 120%;
+    border: none;
+    cursor: pointer;
+  }
+
+  #failed-button, #failed2-button{
+    background-color: red;
+    border-radius: 7px;
+    padding: 6px;
+    color: white;
+    font-size: 120%;
+    border: none;
+    cursor: pointer;
+  }
+
+  #section21{
+    background-color: #ff6347;
+    padding: 10px;
+  }
+
+  header {
+    background-color: #4285f4;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.advertisment {
+    margin: 20px;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+h2 {
+    color: white;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #666;
+}
+
+.ad-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+.ad {
+    width: 100%;
+    margin: 15px;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 10px magenta;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.ad:hover {
+    transform: scale(0.95);
+}
+
+.ad h3,
+.ad p {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+}
+
+.ad::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
+    z-index: 0;
+}
+    
+#level1status, #level2status, #level3status, #level4status, #level5status, #level6status, #level7status, #level8status, #level9status, #level10status{
+  width: 20%;
+  margin-left: 45%;
+  z-index: 3;
+}
+
+#nopayment {
+  display: none;
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  font-size: 100%;
+  transform: translate(-50%, -50%);
+  padding: 9px;
+  background-color: red;
+  color: white;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 4;
+  width: 90%;
+}
+
+#codeUsed {
+  display: none;
+  position: fixed;
+  top: 14%;
+  left: 50%;
+  font-size: 80%;
+  transform: translate(-50%, -50%);
+  padding: 9px;
+  background-color: red;
+  color: white;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 4;
+}

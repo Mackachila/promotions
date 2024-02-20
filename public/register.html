@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <script defer src="./index.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>  
+  <link rel="icon" type="image/png" href="currency.png"> 
+</head>
+<body>
+  <div class="loader" id="loader"></div>
+   <section class="cta">
+    <div class="container">
+      <div class="registration">
+        
+        <form action="/register" method="post" id="registration_form">
+          <div class="title-card">Get Registered</div>
+          <div style="color: yellow; font-size: 120%;">Join millions of users promoting crypto</div>
+          <div id="error-messages" style="color: red;"></div><br>
+          <div style="font-size: 100%;" id="registration-emptyfield-error" class="error"></div><br>
+          <label for="username"><img src="username.png" alt="Email Icon"><input style="width: 95%" type="text" name="username" id="username" placeholder="Username" class="placeholder-red"></label>
+          <p id="registration-username-error" class="error"></p>
+          <label for="username"><img src="email.png" alt="Email Icon"><input style="width: 95%" type="text" name="email" id="email" placeholder="Email Address" class="placeholder-red"></label>
+          <p id="registration-email-error" class="error"></p>
+          <label for="username"><img src="contact.png" alt="Email Icon"><input  style="width: 95%; font-size: 100%" type="text" id="phone_number" name="phone_number" placeholder="Phone number" class="placeholder-red"></label>
+            <p id="registration-phone-error" class="error"></p>
+            <label for="username"><img src="invitation.png" alt="Email Icon"><input  style="width: 95%; font-size: 100%" type="text" id="invitation_code" name="invitation_code" placeholder="Invitation Code" class="placeholder-red"></label>
+            <p id="registration-invitation-error" class="error"></p>
+            <label for="username"><img src="password.png" alt="Email Icon"><input style="width: 95%" type="password" name="password" id="password" placeholder="Password" class="placeholder-red"></label>
+            <p id="registration-password-error" class="error"></p>
+            <label for="username"><img src="password.png" alt="Email Icon"><input style="width: 95%" type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" class="placeholder-red"></label>
+            <p id="registration-confirmpassword-error" class="error"></p>
+            <button type="submit">Register</button><br><br>
+           <div style="color: white;"> Have an account?<a  href="login.html" style="color: yellow;"> Login</a></div>
+            </form><br><br><br><br>
+        </div>
+      </div>
+     </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Promotecryptoafrica. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Display error messages based on the error parameter
+    function errorMessages() {
+      const urlParams1 = new URLSearchParams(window.location.search);
+      const wr = urlParams1.get('wr');
+
+      if (wr === 'qjrfapps_gdfajsd_yrkwaqtefd_hdfreaujerw') {
+        document.getElementById('error-messages').textContent = 'Username is taken.';
+      } else if (wr === 'pdr_hdfwqsfat_jftgsre_urtoyrsg') {
+        document.getElementById('error-messages').textContent = 'Email already registered.';
+      } else if (wr === 'hfryts_knfekg_kqwasy_opvrw') {
+        document.getElementById('error-messages').textContent = 'Phone number already registered.';
+      } else if (wr === 'squyta_kiyvcmcs_ytsdwqzp_lmorodr') {
+        document.getElementById('error-messages').textContent = 'There was an error. Please try again.';
+      }
+      else if (wr === 'pphhds-gdgayrtw-uhfgd') {
+        document.getElementById('error-messages').textContent = 'Invalid invitation code.The last name in the link is the invitation code';
+      }
+    }
+
+    // Restore form data from sessionStorage
+    function restoreFormData() {
+      const formData = JSON.parse(sessionStorage.getItem('registrationFormData')) || {};
+
+      document.getElementById('username').value = formData.username || '';
+      document.getElementById('email').value = formData.email || '';
+      document.getElementById('phone_number').value = formData.phone_number || '';
+      document.getElementById('invitation_code').value = formData.invitation_code || '';
+
+      // Clear stored form data after restoring
+      sessionStorage.removeItem('registrationFormData');
+    }
+
+    // Save form data to sessionStorage
+    function saveFormData() {
+      const formData = {
+        username: document.getElementById('username').value,
+        email: document.getElementById('email').value,
+        phone_number: document.getElementById('phone_number').value,
+        invitation_code: document.getElementById('invitation_code').value,
+        // ... (save other form fields)
+      };
+
+      sessionStorage.setItem('registrationFormData', JSON.stringify(formData));
+    }
+
+    // Run the script when the DOM content is loaded
+    document.addEventListener('DOMContentLoaded', function () {
+      errorMessages();
+      restoreFormData(); // Restore form data on page load
+      const urlParams = new URLSearchParams(window.location.search);
+    const inviter = urlParams.get('inviter');
+
+    // Fill the inviter's username in the input field
+    if (inviter) {
+      document.getElementById('invitation_code').value = inviter;
+    }
+      // Add an event listener to the form submission
+      document.getElementById('registration_form').addEventListener('submit', function (event) {
+        // Save form data before submission
+        saveFormData();
+      });
+    });
+
+    // Function to send OTP
+    function sendOtp() {
+      const phoneNumber = document.getElementById('phone_number').value;
+      // Make an AJAX request to your server to trigger OTP sending
+      // You can use fetch or other AJAX libraries
+      fetch('/send-otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ phoneNumber }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert('OTP sent successfully. Check your phone.');
+        } else {
+          alert('Failed to send OTP. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error sending OTP:', error);
+      });
+    }
+  </script>
+</body>
+</html>

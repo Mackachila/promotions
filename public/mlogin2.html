@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script defer src ="./index.js"></script>       
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h2>Login as Account Manager</h2>
+      <p>Globall Contents</p>
+      </div>
+  </header>
+
+  <section class="features">
+    <div class="container">
+      <div class="feature">
+        <img src="writing.png" alt="Write">
+        <h2>Login and help us manage offline payments</h2>
+        
+      </div>
+      </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+
+      <div class="registration">
+      <form action="/mlogin2" method="post"  id="login_form" onsubmit="login(event)">
+        <h1>Login</h1>
+        <p id="login-emptyfield-error" class="error"></p>
+        <div id="error-message" style="color: red;"></div><br>
+        <input style="width: 95%" type="text" name="username" id="login_username" placeholder="Username"><br><br>
+        <input style="width: 95%" type="password" name="password" id="login_password" placeholder="Password"><br><br>
+    <button type="submit">Login</button><br><br>
+     </form>
+    </div>
+    </div>
+    </div>
+  </section>
+	<footer>
+    <div class="container">
+      <p>&copy; 2024 Globall Contents. All rights reserved.</p>
+    </div>
+  </footer>
+ <script>    
+
+ // Display error messages based on the error parameter
+function displayErrorMessages() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const error = urlParams.get('error');
+
+  if (error === 'user_not_found') {
+    document.getElementById('error-message').textContent = 'Wrong username.';
+  } else if (error === 'incorrect_password') {
+    document.getElementById('error-message').textContent = 'Incorrect password.';
+  } else if (error === 'server_error') {
+    document.getElementById('error-message').textContent = 'We did not find such user in our records.';
+  }
+}
+
+// Get the error message on window load
+window.onload = function () {
+  displayErrorMessages();
+};
+</script>
+
+</body>
+</html>

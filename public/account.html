@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Account</title>
+  <link rel="stylesheet" type="text/css" href="./account.css">
+
+  <script defer src="./acount.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  </head>
+<body>
+
+<div id="navbar">
+  <div>
+    <b>Globall Contents</b>
+  </div>
+  <div>
+    <a href="#">Tasks</a>
+    <a href="#">Accounts</a>
+    <a href="#">Settings</a>
+    <a href="#">Messages</a>
+  </div>
+</div>
+
+<div id="dashboard">
+  <div>
+    <div class="user-info"><br>
+      User: <b id="username-display"></b>
+      <p>Account: <b id="account-type"></b></p>
+      <p>Type: <b id="current_account"></b></p>
+      <p>Ballance: <b id="account_ballance"></b></p>
+      <p>Tasks/Day: <b id="tasks"></b></p>
+      <p>Done Today: <b id="done"></b></p>
+      <p>Remaining: <b id="remaining"></b></p>
+      <p>Earning/Day: <b id="earnings"></b></p>
+      <p>Earned Today: <b id="todays"></b></p>
+      <p>Total Earnings: <b id="totalearnings"></b></p>
+      <p>Total Deposit: <b id="totaldeposit"></b></p>
+      <p>Total Withdrawal: <b id="totalwithdrawal"></b></p>
+      <p><button id="withdraw">Withdraw</button>
+      <button id="submittask">Submit Task</button></p>
+      <p><a href="otp.html"><button id="verifyaccount">Verify your account</button></a></p>
+      <p><button id="logout-button">Logout</button></p>
+    </div>
+  </div>
+  <div>
+    <!-- Add additional links or content for the dashboard -->
+  </div>
+</div>
+  
+<div id="content"><br><br><br><br><br>
+  <h2>Verify Payment</h2>
+  <label for="transactionId">Transaction ID:</label>
+  <input type="text" id="transactionId" name="transactionId">
+  <p id="id-error-message" class="error"></p>
+  <button onclick="verifyPayment()">Verify Payment</button>
+    
+ 
+
+  <h4>Bellow are the types of accounts and their details</h4>
+  <section id="section1">
+  <h3>Free Account. Earn KES.23 per day</h3>
+  <p>Do 1 task per day free and earn 0.15$ (KES 23) per task. Minimum withdrawal 3.23$ (KES.500).</p>
+  <p>Here you will be given random questions daily abount different Crypto currencies. You need to copy paste into ChatGpt and edit for us the results.</p>
+  
+ <button id="payNowButton" onclick="initiateMpesaPayment()">Pay now</button>
+  </section>
+
+<section id="section2">
+  <h3>WLD Account (KES. 500). Earn KES.62 per day</h3>
+  <p>Do 1 task per day and earn 0.4$ (KES 62) per task. Minimum withdrawal 3.23$ (KES.500).</p>
+  <p>Here you will be given random questions daily abount <b>WorldCoin Crypto (WLD)</b>. You need to copy paste into ChatGpt and edit for us the results.</p>
+  <button>Activate</button>
+</section>
+
+<section id="section3">
+  <h3>INJ Account (KES. 2,000). Earn KES.154 per day</h3>
+  <p>Do 2 tasks per day and earn 0.5$ (KES.77) per task. Minimum withdrawal 3.23$ (KES.500).</p>
+  <p>Here you will be given random questions daily abount <b>Injective Protocol Crypto (INJ)</b>. You need to copy paste into ChatGpt and edit for us the results.</p>
+  <button>Activate</button>
+</section>
+
+<section id="section4">
+  <h3>BNB Account (KES. 5,000). Earn KES.278 per day</h3>
+  <p>Do 2 tasks per day and earn 0.9$ (KES.139) per task. Minimum withdrawal 3.23$ (KES.500).</p>
+  <p>Here you will be given random questions daily abount <b>Binance Crypto (BNB)</b>. You need to copy paste into ChatGpt and edit for us the results.</p>
+  <button>Activate</button>
+</section>
+
+<section id="section5">
+  <h3>SOL Account (KES. 15,000). Earn KES.702 per day</h3>
+  <p>Do 3 tasks per day and earn 1.51$ (KES.234) per task. Minimum withdrawal 4.5$ (KES.697).</p>
+  <p>Here you will be given random questions daily abount <b>Solana Crypto (SOL)</b>. You need to copy paste into ChatGpt and edit for us the results.</p>
+  <button>Activate</button>
+</section>
+
+<section id="section6">
+  <h3>ETH Account (KES. 40,000). Earn KES.1,161 per day</h3>
+  <p>Do 3 tasks per day and earn 2.5$ (KES.387) per task. Minimum withdrawal 7.5$ (KES.1,161).</p>
+  <p>Here you will be given random questions daily abount <b>Ethereum Crypto (BNB)</b>. You need to copy paste into ChatGpt and edit for us the results.</p>
+  <button>Activate</button>
+</section>
+
+<section id="section7">
+  <h3>BTC Account (KES. 80,000). Earn KES.2,325 per day</h3>
+  <p>Do 3 tasks per day and earn 5$ (KES.775) per task. Minimum withdrawal 15$ (KES.2,325).</p>
+  <p>Here you will be given random questions daily abount <b>Bit Coin Crypto (BTC)</b>. You need to copy paste into ChatGpt and edit for us the results.</p>
+  <button>Activate</button>
+</section>
+
+<section id="section8">
+  <h3>Silver Account (KES.200,000). Earn KES.6,200 per day</h3>
+  <p>Do 5 tasks per day and earn 8$ (KES.1240) per task. Minimum withdrawal 40$ (KES.6200).</p>
+  <p>Here you will be given random questions daily abount <b>Binance Coin (BNB)</b>. You need to copy paste into ChatGpt and edit for us the results.</p>
+  <button>Activate</button>
+</section>
+
+<section id="section8">
+  <h3>GOLD Account (KES.500,000). Earn KES.15,345 per day</h3>
+  <p>Do 9 tasks per day and earn 11$ (KES.1,705) per task. Minimum withdrawal 99$ (KES.15,345).</p>
+  <p>Here you will be given random questions daily abount <b>Binance Coin (BNB)</b>. You need to copy paste into ChatGpt and edit for us the results.</p>
+  <button>Activate</button>
+</section>
+
+<section id="section8">
+  <h3>GOLD Account (KES.1,000,000). Earn KES.31,000 per day</h3>
+  <p>Do 10 tasks per day and earn 20$ (KES.3,100) per task. Minimum withdrawal 200$ (KES.31,000).</p>
+  <p>Here you will be given random questions daily abount <b>Binance Coin (BNB)</b>. You need to copy paste into ChatGpt and edit for us the results.</p>
+  <button>Activate</button>
+</section>
+
+<section id="section8">
+  <h3>GOLD Account (KES.3,000,000). Earn KES.77,500 per day</h3>
+  <p>Do 10 tasks per day and earn 50$ (KES.7,750) per task. Minimum withdrawal 500$ (KES.77,500).</p>
+  <p>Here you will be given random questions daily abount <b>Binance Coin (BNB)</b>. You need to copy paste into ChatGpt and edit for us the results.</p>
+  <button>Activate</button>
+</section>
+
+You can request withdrawals once per day. Our withdrawals are subjected to 5% taxs.<br><br><br><br><br>.
+</div>
+<footer>
+  <p>&copy; 2023 Your Website Name. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
